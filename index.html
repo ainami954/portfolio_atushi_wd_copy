@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+  公開前に書き換える箇所（「★」で検索できます）
+  ★1 氏名（2か所：<title> と ヘッダー）
+  ★2 メールアドレス（2か所：href と 表示テキスト）
+  ★3 各デザイン案のURL（実際のNetlifyのURLを確認）
+  ★4 images/ の画像（今は仮の画像。1280×800で撮り直したものに差し替え）
+-->
+<title>井波　聡｜江南区のお店のためのデザイン案</title><!-- ★1 -->
+<meta name="description" content="新潟市江南区・亀田周辺のお店に向けて、提案用に作成したWebサイトのデザイン案の一覧です。">
+<meta property="og:image" content="https://nico-b.netlify.app/images/og.webp">
+<!-- 実在の店舗名を含むため、検索エンジンには載せない設定にしています。名刺のQRコードから開く人だけに見てもらうためのページです。 -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FBFBF9;
+  --white: #FFFFFF;
+  --ink: #23282B;
+  --ink-2: #3E4549;
+  --ink-3: #5F676B;
+  --rule: #DCE1DE;
+  --panel: #F1F3F0;
+  --accent: #2F6B5E;
+  --accent-dark: #1F4C42;
+  --mincho: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --gothic: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--gothic);
+  font-size: 16px;
+  line-height: 1.8;
+  font-feature-settings: "palt" 1;
+}
+a { color: var(--accent); }
+a:hover { color: var(--accent-dark); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+img { max-width: 100%; display: block; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+/* ヘッダー */
+.site-header { background: var(--white); border-bottom: 1px solid var(--rule); }
+.site-header .wrap {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px; padding-top: 16px; padding-bottom: 16px;
+}
+.who { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 14px; }
+.who-name { font-family: var(--mincho); font-size: 20px; font-weight: 600; letter-spacing: .12em; }
+.who-roman { font-size: 13px; color: var(--ink-3); letter-spacing: .06em; }
+.btn-outline {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
+  border: 1px solid var(--accent); color: var(--accent);
+  font-size: 14px; font-weight: 500; text-decoration: none;
+}
+.btn-outline:hover { background: var(--accent); color: var(--white); }
+
+/* 導入 */
+.intro { padding-top: 56px; max-width: 680px; }
+.eyebrow { margin: 0 0 14px; font-size: 14px; font-weight: 500; color: var(--accent); letter-spacing: .04em; }
+h1 {
+  margin: 0 0 18px; font-family: var(--mincho); font-weight: 600;
+  font-size: clamp(28px, 6vw, 40px); line-height: 1.5; letter-spacing: .04em;
+  text-wrap: balance;
+}
+.lede { margin: 0 0 22px; color: var(--ink-2); text-wrap: pretty; }
+.notice {
+  margin: 0; padding: 14px 18px; background: var(--panel);
+  font-size: 13.5px; line-height: 1.85; color: var(--ink-2);
+}
+.notice a { white-space: nowrap; margin-left: 4px; }
+
+/* 一覧 */
+.works { padding-top: 56px; }
+.works-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  padding-bottom: 12px; margin-bottom: 28px; border-bottom: 1px solid var(--rule);
+}
+h2 { margin: 0; font-family: var(--mincho); font-weight: 600; letter-spacing: .06em; }
+.works-head h2 { font-size: 20px; }
+.works-count { font-size: 13px; color: var(--ink-3); }
+
+.grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 32px 28px;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+.work {
+  display: flex; flex-direction: column; height: 100%;
+  background: var(--white); border: 1px solid var(--rule);
+  color: var(--ink); text-decoration: none;
+  transition: border-color .15s;
+}
+.work:hover { color: var(--ink); border-color: var(--accent); }
+.work-thumb { position: relative; border-bottom: 1px solid var(--rule); overflow: hidden; }
+.work-thumb img {
+  width: 100%; height: auto; aspect-ratio: 16 / 10;
+  object-fit: cover; object-position: top;
+}
+.work-tag {
+  position: absolute; left: 10px; bottom: 10px;
+  padding: 3px 10px; background: var(--white); border: 1px solid #C9CFCB;
+  font-size: 12px; font-weight: 500; color: var(--ink-2); letter-spacing: .04em; line-height: 1.6;
+}
+.work-body { display: flex; flex-direction: column; gap: 6px; flex-grow: 1; padding: 18px 20px 22px; }
+.work-kind { font-size: 12.5px; font-weight: 500; color: var(--accent); letter-spacing: .03em; }
+.work-name { font-family: var(--mincho); font-size: 19px; font-weight: 600; line-height: 1.5; letter-spacing: .03em; }
+.work-note { flex-grow: 1; font-size: 14px; color: #4A5256; text-wrap: pretty; }
+.work-open {
+  margin-top: 10px; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13.5px; font-weight: 500; color: var(--accent);
+}
+.work:hover .work-open { text-decoration: underline; }
+
+/* フッター */
+.site-footer { margin-top: 72px; background: var(--white); border-top: 1px solid var(--rule); }
+.contact {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px 64px;
+  padding-top: 56px; padding-bottom: 56px;
+}
+.contact-text { max-width: 560px; }
+.contact-text h2 { font-size: 22px; line-height: 1.6; margin-bottom: 14px; }
+.contact-text p { margin: 0; color: var(--ink-2); font-size: 15px; text-wrap: pretty; }
+.contact-info { display: flex; flex-direction: column; gap: 4px; font-size: 15px; }
+.contact-label { font-size: 13px; color: var(--ink-3); }
+.contact-mail { font-weight: 500; word-break: break-all; }
+
+.about { border-top: 1px solid var(--rule); }
+.about .wrap { padding-top: 36px; padding-bottom: 48px; }
+.about-inner { max-width: 720px; }
+.about h2 { font-family: var(--gothic); font-size: 15px; font-weight: 700; letter-spacing: 0; margin-bottom: 10px; }
+.about p { margin: 0 0 10px; font-size: 13.5px; line-height: 1.9; color: var(--ink-2); text-wrap: pretty; }
+.about p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="who">
+      <span class="who-name">井波　聡</span><!-- ★1 -->
+      <span class="who-roman">Akira Inami</span>
+    </div>
+    <a class="btn-outline" href="#contact">お問い合わせ</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <p class="eyebrow">Webサイト制作（勉強中）</p>
+    <h1>江南区のお店のための、<br>デザイン案。</h1>
+    <p class="lede">新潟市江南区・亀田周辺のお店に向けて、提案用につくったWebサイトのデザイン案です。気になるものを開くと、実際に動くページを見られます。</p>
+    <p class="notice">掲載しているのは、各店舗へのご提案のために、私が自主的に作成したデザインのサンプルです。ご依頼を受けて制作したものではなく、お店の公式サイトでもありません。写真・文章には仮のものを含みます。<a href="#about-samples">詳しくはこちら</a></p>
+  </section>
+
+  <section class="works" aria-labelledby="works-title">
+    <div class="works-head">
+      <h2 id="works-title">デザイン案</h2>
+      <span class="works-count">2件</span>
+    </div>
+
+    <ul class="grid">
+      <li>
+        <!-- ★3 URLを確認 -->
+        <a class="work" href="https://nico-b.netlify.app" target="_blank" rel="noopener">
+          <div class="work-thumb">
+            <!-- ★4 -->
+            <img src="images/nico.webp" alt="美容室 nicoのデザイン案のトップ画面" width="1280" height="800" loading="lazy">
+            <span class="work-tag">提案用サンプル</span>
+          </div>
+          <div class="work-body">
+            <span class="work-kind">美容室（七五三・成人式の着付け）｜江南区亀田</span>
+            <span class="work-name">美容室 nico</span>
+            <span class="work-note">七五三・成人式の当日、朝の流れが前もって分かる季節限定のページ。</span>
+            <span class="work-open">デザイン案を開く
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7"/><path d="M13 3L4 12"/></svg>
+            </span>
+          </div>
+        </a>
+      </li>
+      <li>
+        <!-- ★3 URLを確認 -->
+        <a class="work" href="https://warmth-hair.netlify.app" target="_blank" rel="noopener">
+          <div class="work-thumb">
+            <!-- ★4 -->
+            <img src="images/warmth.webp" alt="Warmthのデザイン案のトップ画面" width="1280" height="800" loading="lazy">
+            <span class="work-tag">提案用サンプル</span>
+          </div>
+          <div class="work-body">
+            <span class="work-kind">美容室｜江南区亀田</span>
+            <span class="work-name">Warmth</span>
+            <span class="work-note">「十年後も、ここで。」長く通うお客様に向けた、縦書きの落ち着いた構成。</span>
+            <span class="work-open">デザイン案を開く
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h7v7"/><path d="M13 3L4 12"/></svg>
+            </span>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="wrap contact">
+    <div class="contact-text">
+      <h2>あなたのお店のデザイン案も、<br>つくらせてください。</h2>
+      <p>まだ勉強中のため、実績を積ませていただく段階として、通常より抑えた条件でお引き受けしています。まずはお話を聞かせていただくところから始めます。</p>
+    </div>
+    <div class="contact-info">
+      <span class="contact-label">連絡先</span>
+      <a class="contact-mail" href="mailto:atushi_i@diligence.jp">atushi_i@diligence.jp</a><!-- ★2 -->
+      <span>新潟市江南区</span>
+    </div>
+  </div>
+
+  <div class="about" id="about-samples">
+    <div class="wrap">
+      <div class="about-inner">
+        <h2>掲載しているデザイン案について</h2>
+        <p>このページのデザイン案は、Webデザインの学習と提案のために、私が各店舗の公開情報をもとに自主的に作成したものです。店舗からのご依頼によるものではなく、各店舗の公式な情報ではありません。営業時間・メニューなどの最新情報は、各店舗の公式の案内をご確認ください。</p>
+        <p>掲載を望まれない店舗の方は、上記の連絡先までご連絡ください。速やかに取り下げます。</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
